@@ -28,14 +28,15 @@ class ListNode:
 
 
 class Solution:
-    def oddEvenList(self, head: ListNode) -> ListNode:
-        oddHead = odd = ListNode(0)
-        evenHead = even = ListNode(0)
+    @staticmethod
+    def odd_even_list(self, head: ListNode) -> ListNode:
+        odd_head = odd = ListNode(0)
+        even_head = even = ListNode(0)
         while head:
             odd.next = head
             even.next = head.next
             odd = odd.next
             even = even.next
             head = head.next.next if even else None
-        odd.next = evenHead.next
-        return oddHead.next
+        odd.next = even_head.next
+        return odd_head.next

@@ -26,7 +26,8 @@ class MyLinkedList:
 
     def addAtHead(self, val: int) -> None:
         """
-        Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.
+        Add a node of value val before the first element of the linked list. After the insertion,
+        the new node will be the first node of the linked list.
         """
         self.addAtIndex(0, val)
 
@@ -38,7 +39,9 @@ class MyLinkedList:
 
     def addAtIndex(self, index: int, val: int) -> None:
         """
-        Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.
+        Add a node of value val before the index-th node in the linked list.
+        If index equals to the length of linked list, the node will be appended to the end of linked list.
+        If index is greater than the length, the node will not be inserted.
         """
         if index > self.length:
             return
@@ -47,12 +50,12 @@ class MyLinkedList:
 
         self.length += 1
         cur = self.head
-        add = ListNode(val)
+        valnode = ListNode(val)
         for i in range(index):
             cur = cur.next
 
-        add.next = cur.next
-        cur.next = add
+        valnode.next = cur.next
+        cur.next = valnode
 
     def deleteAtIndex(self, index: int) -> None:
         """
@@ -69,8 +72,9 @@ class MyLinkedList:
 
 class ListNode:
     def __init__(self, x):
-        self.head = ListNode(0)
-        self.tail = ListNode(0)
+        self.prev = None
+        self.next = None
+        self.val = x
 
 
 class MyLinkedList1:

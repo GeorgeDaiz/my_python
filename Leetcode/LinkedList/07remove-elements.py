@@ -16,18 +16,18 @@ class ListNode:
 
 
 class Solution:
-    def removeElements(self, head: ListNode, val: int) -> ListNode:
-
+    @staticmethod
+    def remove_elements(head: ListNode, val: int):
         while head and head.val == val:
             head = head.next
 
         if not head:
             return
-        headNode = head
+        head_node = head
 
         while head.next is not None:
             if head.next.val == val:
                 head.next = head.next.next
             else:
                 head = head.next
-        return headNode
+        return head_node

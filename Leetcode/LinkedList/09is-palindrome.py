@@ -24,7 +24,8 @@ class ListNode:
 
 
 class Solution:
-    def reverse_list(self, head: ListNode) -> ListNode:
+    @staticmethod
+    def reverse_list(head: ListNode):
         if not head:
             return
         new = None

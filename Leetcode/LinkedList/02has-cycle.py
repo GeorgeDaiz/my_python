@@ -30,7 +30,8 @@ class ListNode:
 
 
 class Solution:
-    def has_cycle(self, head: ListNode) -> bool:
+    @staticmethod
+    def has_cycle(head: ListNode) -> bool:
         if head is None or head.next is None:
             return False
 

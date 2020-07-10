@@ -19,7 +19,8 @@ class ListNode:
 
 
 class Solution:
-    def reverse_list(self, head: ListNode) -> ListNode:
+    @staticmethod
+    def reverse_list(head: ListNode):
         if not head:
             return
         p = head
@@ -32,7 +33,8 @@ class Solution:
             q = r
         return p
 
-    def reverse_list1(self, head: ListNode) -> ListNode:
+    @staticmethod
+    def reverse_list1(head: ListNode):
         if not head:
             return
         new = None
@@ -43,15 +45,16 @@ class Solution:
             new = p
         return new
 
-    def reverse_list_re(self, head: ListNode) -> ListNode:
+    @staticmethod
+    def reverse_list_re(self, head: ListNode):
         if not head:
             return
         if not head.next:
             return head
-        headNode = self.reverse_list_re(head.next)
+        head_node = self.reverse_list_re(head.next)
         head.next.next = head
         head.next = None
-        return headNode
+        return head_node
 
 
 if __name__ == '__main__':

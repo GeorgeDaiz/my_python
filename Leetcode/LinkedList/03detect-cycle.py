@@ -28,7 +28,8 @@ class ListNode:
 
 
 class Solution:
-    def detect_cycle(self, head: ListNode) -> ListNode:
+    @staticmethod
+    def detect_cycle(head: ListNode):
         if head is None or head.next is None:
             return None
         faster = head

@@ -34,6 +34,8 @@ class Solution:
             r.next = p1
         elif p2:
             r.next = p2
+        elif not p1 and not p2:
+            return
         return head
 
     def merge_two_list_re(self, head1: ListNode, head2: ListNode) -> ListNode:
@@ -46,9 +48,9 @@ class Solution:
         if head1.val <= head2.val:
             merged = head1
             head1 = head1.next
-            merged = merged.next
+            merged.next = self.merge_two_list_re(head1, head2)
         else:
             merged = head2
             head2 = head2.next
-            merged = merged.next
+            merged.next = self.merge_two_list_re(head1, head2)
         return merged
