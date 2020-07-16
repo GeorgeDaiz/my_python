@@ -39,11 +39,12 @@ class Solution:
         grid[i][j] = '0'
         for d in dirs:  # 遍历上下左右四个方向
             ni, nj = i + d[0], j + d[1]
-            if ni >= 0 and ni < len(grid) and nj >= 0 and nj < len(grid[0]):
+            if 0 <= ni < len(grid) and 0 <= nj < len(grid[0]):
                 if grid[ni][nj] == '1':
                     self.dfs(grid, ni, nj)
 
-    def num_islands_bfs(self, grid) -> int:
+    @staticmethod
+    def num_islands_bfs(grid) -> int:
         # BFS
         res = 0
         if len(grid) == 0:
