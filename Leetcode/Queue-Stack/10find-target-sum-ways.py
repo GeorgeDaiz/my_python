@@ -23,3 +23,22 @@
     初始的数组的和不会超过 1000 。
     保证返回的最终结果能被 32 位整数存下。
 """
+from collections import defaultdict
+
+
+class Solution:
+    @staticmethod
+    def find_target_sum_ways(nums: 'List[int]', s: 'int') -> 'int':
+        """
+        :param nums: List[int]
+        :param s: int
+        :return: int
+        """
+        _len = len(nums)
+        dp = [defaultdict(int) for _ in range(_len + 1)]
+        dp[0][0] = 1
+        for i, j in enumerate(nums):
+            for sum, cnt in dp[i].items():
+                dp[i+1][sum+j] += cnt
+                dp[i+1][sum-j] += cnt
+        return dp[_len][s]
