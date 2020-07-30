@@ -19,7 +19,8 @@ return [0, 1].
 
 
 class Solution(object):
-    def two_sum(self, nums, target):
+    @staticmethod
+    def two_sum(nums, target):
         if len(nums) <= 1:
             return False
 

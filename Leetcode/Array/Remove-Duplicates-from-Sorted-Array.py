@@ -18,7 +18,8 @@ It doesn't matter what you leave beyond the new length.
 
 
 class Solution(object):
-    def remove_duplicates(self, item):
+    @staticmethod
+    def remove_duplicates(item):
         if not item:
             return 0
 

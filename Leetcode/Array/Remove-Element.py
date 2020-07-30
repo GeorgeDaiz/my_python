@@ -19,7 +19,8 @@ Your function should return length = 2, with the first two elements of nums bein
 
 
 class Solution(object):
-    def remove_element(self, item, target):
+    @staticmethod
+    def remove_element(item, target):
         new_tail = 0
         for i in range(1, len(item)):
             if item[i] != target:
