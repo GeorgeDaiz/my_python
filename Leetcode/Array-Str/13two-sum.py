@@ -20,13 +20,13 @@ return [0, 1].
 
 class Solution(object):
     @staticmethod
-    def two_sum(nums, target):
-        if len(nums) <= 1:
-            return False
+    def two_sum(numbers, target) -> list:
+        if not numbers:
+            return []
 
         buff_dict = {}
-        for i in range(len(nums)):
-            if nums[i] in buff_dict:
-                return [buff_dict[nums[i]], i]
+        for i in range(len(numbers)):
+            if numbers[i] in buff_dict:
+                return [buff_dict[numbers[i]], i]
             else:
-                buff_dict[target - nums[i]] = i
+                buff_dict[target - numbers[i]] = i

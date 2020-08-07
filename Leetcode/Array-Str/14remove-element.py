@@ -20,10 +20,10 @@ Your function should return length = 2, with the first two elements of nums bein
 
 class Solution(object):
     @staticmethod
-    def remove_element(item, target):
+    def remove_element(nums, val: int) -> int:
         new_tail = 0
-        for i in range(1, len(item)):
-            if item[i] != target:
-                item[new_tail] = item[i]
-                i += 1
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[new_tail] = nums[i]
+                new_tail += 1
         return new_tail
