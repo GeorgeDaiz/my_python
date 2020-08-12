@@ -49,3 +49,20 @@ class Solution:
 
         return root
 
+    @staticmethod
+    def build_tree1(inorder: list, postorder: list) -> TreeNode:
+        if not inorder:
+            return TreeNode(None)
+        idx_map = {val: idx for idx, val in enumerate(inorder)}
+
+        def search(left, right):
+            if left > right:
+                return None
+            val = postorder.pop()
+            root = TreeNode(val)
+            idx = idx_map[val]
+            root.right = search(idx + 1, right)
+            root.left = search(left, idx - 1)
+            return root
+
+        return search(0, len(inorder) - 1)
