@@ -46,6 +46,16 @@ class Solution:
                 result[j] += result[j - 1]
         return result
 
+    def generate1(self, row_index: int) -> list:
+        # 递归
+        if row_index == 0:
+            return []
+        if row_index == 1:
+            return [[1]]
+        upper = self.generate1(row_index - 1)
+        upper.append([1] + [upper[-1][i - 1] + upper[-1][i] for i in range(1, row_index - 1)] + [1])
+        return upper
+
 
 if __name__ == '__main__':
     res = Solution().get_row(7)

@@ -61,7 +61,7 @@ class Solution:
         front_q.add('0000')
         behind_q.add(target)
         while front_q and behind_q:
-            if front_q & behind_q:
+            if front_q and behind_q:
                 return res
             if len(front_q) > len(behind_q):
                 front_q, behind_q = behind_q, front_q

@@ -76,7 +76,7 @@ class Solution:
         }
         for t in tokens:
             if t in op:
-                r = stack.append(op[t](stack.pop(), stack.pop()))
+                stack.append(op[t](stack.pop(), stack.pop()))
             else:
                 stack.append(int(t))
         return stack[-1]

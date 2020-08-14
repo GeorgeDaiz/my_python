@@ -1,3 +1,12 @@
+"""
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+
+示例：
+输入：1->2->4, 1->3->4
+输出：1->1->2->3->4->4
+"""
+
+
 # -*- coding:utf-8 -*-
 class ListNode:
     def __init__(self, x):
@@ -6,51 +15,31 @@ class ListNode:
 
 
 class Solution:
-    def merge_two_list(self, head1: ListNode, head2: ListNode) -> ListNode:
-        p1 = head1
-        p2 = head2
-        if p1 and p2:
-            if p1.val <= p2.val:
-                head = p1
-                p1 = p1.next
+    @staticmethod
+    def merge_two_list(head1: ListNode, head2: ListNode) -> ListNode:
+        # 迭代
+        p_head = ListNode(-1)
+        prev = p_head
+        while head1 and head2:
+            if head1 < head2:
+                prev.next = head1
+                head1 = head1.next
             else:
-                head = p2
-                p2 = p2.next
-            r = head
-        elif p1:
-            return p1
-        else:
-            return p2
-        while p1 and p2:
-            if p1.val <= p2.val:
-                r.next = p1
-                p1 = p1.next
-                r = r.next
-            else:
-                r.next = p2
-                p2 = p2.next
-                r = r.next
-        if p1:
-            r.next = p1
-        elif p2:
-            r.next = p2
-        elif not p1 and not p2:
-            return
-        return head
+                prev.next = head2
+                head2 = head2.next
+        prev.next = head1 if head1 else head2
+        return p_head
 
     def merge_two_list_re(self, head1: ListNode, head2: ListNode) -> ListNode:
-        merged = None
+        # 递归
         if not head1:
             return head2
         elif not head2:
             return head1
 
         if head1.val <= head2.val:
-            merged = head1
-            head1 = head1.next
-            merged.next = self.merge_two_list_re(head1, head2)
+            head1.next = self.merge_two_list_re(head1, head2)
+            return head1
         else:
-            merged = head2
-            head2 = head2.next
-            merged.next = self.merge_two_list_re(head1, head2)
-        return merged
+            head2.next = self.merge_two_list_re(head1, head2)
+            return head2
