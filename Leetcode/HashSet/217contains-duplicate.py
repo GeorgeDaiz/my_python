@@ -19,6 +19,6 @@
 
 
 class Solution:
-    def contains_duplicate(self, nums: list) -> bool:
-        
-        pass
+    @staticmethod
+    def contains_duplicate(nums: list) -> bool:
+        return len(set(nums)) != len(nums)
