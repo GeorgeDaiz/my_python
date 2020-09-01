@@ -19,14 +19,13 @@ It doesn't matter what you leave beyond the new length.
 
 class Solution(object):
     @staticmethod
-    def remove_duplicates(item):
-        if not item:
+    def remove_duplicates(nums: list) -> int:
+        if not nums:
             return 0
 
         new_tail = 0
-        for i in range(1, len(item)):
-            if item[i] != item[new_tail]:
+        for i in range(1, len(nums)):
+            if nums[i] != nums[new_tail]:
                 new_tail += 1
-                item[new_tail] = item[i]
-
-        return new_tail+1
+                nums[new_tail] = nums[i]
+        return new_tail + 1
