@@ -14,15 +14,27 @@
 
 class Solution:
     @staticmethod
-    def move_zeroes(nums) -> None:
+    def moveZeros(nums) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
         if not nums:
             return None
         slow = 0
-        n = len(nums)
-        for fast in range(n):
-            if nums[fast] != 0:
-                nums[slow] = nums[fast]
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[slow] = nums[i]
                 slow += 1
+        for i in range(slow, len(nums)):
+            nums[i] = 0
+
+    def moveZeros1(self, nums) -> None:
+        if not nums:
+            return None
+        j = 0
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                if i > j:
+                    nums[j] = nums[i]
+                    nums[i] = 0
+                j += 1

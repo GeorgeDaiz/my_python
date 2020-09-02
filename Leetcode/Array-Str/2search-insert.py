@@ -1,11 +1,4 @@
 """
-Description：
-
-Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
-You may assume no duplicates in the array.
-
-Translate：
-
 给一个有序的数组和一个目标值，返回这个目标值在数组里的位置索引。如果找不到，请返回目标值如果在这个有序数列中的索引。
 这个数组里没有重复的元素。
 
