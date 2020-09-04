@@ -20,14 +20,14 @@
 
 class Solution:
     @staticmethod
-    def longest_common_prefix(strs) -> str:
+    def longestCommonPrefix(strs) -> str:
         if not strs:
             return ''
         if len(strs) == 1:
             return strs[0]
         res = ""
-        min_n = len(min(strs))
-        for i in range(min_n):
+        min_len = min([len(i) for i in strs])
+        for i in range(min_len):
             cur = set(word[i] for word in strs)
             if len(cur) == 1:
                 res += cur.pop()
@@ -37,5 +37,5 @@ class Solution:
 
 
 if __name__ == '__main__':
-    ret = Solution().longest_common_prefix(["flower","flow","flight"])
+    ret = Solution().longestCommonPrefix(["aca", "cba"])
     print(ret)

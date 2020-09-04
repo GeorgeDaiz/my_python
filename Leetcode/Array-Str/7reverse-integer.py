@@ -35,7 +35,7 @@ class Solution:
         if x < 0:
             s = '-' + s
         result = int(s)
-        if result >= -2**31 and result <= 2**31:
+        if -2 ** 31 <= result <= 2**31:
             return result
         else:
             return 0
