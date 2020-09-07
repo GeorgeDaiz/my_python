@@ -38,15 +38,14 @@ class Solution:
     @staticmethod
     def max_depth1(root):
         # 迭代
-        de = 0
-        if root:
-            stack = [(1, root)]
-        else:
+        depth = 0
+        if not root:
             return 0
+        stack = [(1, root)]
         while stack:
-            cur_de, node = stack.pop()
-            if node:  # 只有当结点存在时+1后的深度才会被采用
-                de = max(de, cur_de)
-                stack.append((cur_de + 1, node.left))
-                stack.append((cur_de + 1, node.right))
-        return de
+            cur_depth, node = stack.pop()
+            if node:
+                depth = max(depth, cur_depth)
+                stack.append((cur_depth + 1, node.left))
+                stack.append((cur_depth + 1, node.right))
+        return depth
