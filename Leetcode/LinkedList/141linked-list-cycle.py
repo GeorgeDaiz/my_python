@@ -30,16 +30,13 @@ class ListNode:
 
 
 class Solution:
-    @staticmethod
-    def has_cycle(head: ListNode) -> bool:
-        if head is None or head.next is None:
+    def hasCycle(self, head: ListNode) -> bool:
+        if not head or not head.next:
             return False
-
-        faster = head
-        slower = head
-        while faster and faster.next:
-            faster = faster.next.next
-            slower = slower.next
-            if faster == slower:
+        fast, slow = head, head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
                 return True
         return False

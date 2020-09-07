@@ -52,4 +52,3 @@ class Solution:
             head = head.next
             new = new.next
         return True
-

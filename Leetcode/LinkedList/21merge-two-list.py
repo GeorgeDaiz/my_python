@@ -18,17 +18,18 @@ class Solution:
     @staticmethod
     def merge_two_list(head1: ListNode, head2: ListNode) -> ListNode:
         # 迭代
-        p_head = ListNode(-1)
-        prev = p_head
+        head = ListNode(-1)
+        prev = head
         while head1 and head2:
-            if head1 < head2:
+            if head1.val < head2.val:
                 prev.next = head1
                 head1 = head1.next
             else:
                 prev.next = head2
                 head2 = head2.next
+            prev = prev.next
         prev.next = head1 if head1 else head2
-        return p_head
+        return head.next
 
     def merge_two_list_re(self, head1: ListNode, head2: ListNode) -> ListNode:
         # 递归
@@ -38,8 +39,8 @@ class Solution:
             return head1
 
         if head1.val <= head2.val:
-            head1.next = self.merge_two_list_re(head1, head2)
+            head1.next = self.merge_two_list_re(head1.next, head2)
             return head1
         else:
-            head2.next = self.merge_two_list_re(head1, head2)
+            head2.next = self.merge_two_list_re(head1, head2.next)
             return head2
