@@ -51,7 +51,7 @@ class Solution:
 
     @staticmethod
     def is_symmetric1(root: TreeNode) -> bool:
-        # # BFS1
+        # # BFS
         # if not root:
         #     return True
         # queue = deque()
@@ -71,7 +71,7 @@ class Solution:
         #     queue.append(right.left)
         # return True
 
-        # BFS2
+        # BFS
         if not root:
             return True
         queue = deque()
