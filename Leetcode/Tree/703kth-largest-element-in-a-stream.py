@@ -45,7 +45,7 @@ class KthLargest:
         return root
 
     def keep_k(self, root):
-        if self.size < self.k:
+        if self.size <= self.k:
             return root
         if not root:
             return None
@@ -83,27 +83,19 @@ class KthLargest:
     def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
         if not root:
             return root
-
-        # delete from the right subtree
-        if key > root.val:
-            root.right = self.deleteNode(root.right, key)
-        # delete from the left subtree
-        elif key < root.val:
-            root.left = self.deleteNode(root.left, key)
-        # delete the current node
-        else:
-            # the node is a leaf
+        if root.val == key:
             if not (root.left or root.right):
                 root = None
-            # the node is not a leaf and has a right child
             elif root.right:
                 root.val = self.successor(root)
                 root.right = self.deleteNode(root.right, root.val)
-            # the node is not a leaf, has no right child, and has a left child
             else:
                 root.val = self.predecessor(root)
                 root.left = self.deleteNode(root.left, root.val)
-
+        elif root.val > key:
+            root.left = self.deleteNode(root.left, key)
+        else:
+            root.right = self.deleteNode(root.right, key)
         return root
 
     def get_min(self):
@@ -116,6 +108,37 @@ class KthLargest:
         self.root = self.insert_root(self.root, val)
         self.root = self.keep_k(self.root)
         return self.get_min()
+
+
+from heapq import *
+
+
+class KthLargest1(object):
+    def __init__(self, k, nums):
+        """
+        :type k: int
+        :type nums: List[int]
+        """
+        self.k = k
+        self.nums = list(nums)
+        self.nums.sort()
+        if len(self.nums) > k:
+            self.nums = self.nums[len(self.nums) - k:]
+        heapify(self.nums)
+
+    def add(self, val):
+        """
+        :type val: int
+        :rtype: int
+        """
+        if len(self.nums) < self.k:
+            heappush(self.nums, val)
+            heapify(self.nums)
+        else:
+            top = self.nums[0] if len(self.nums) > 0 else float('-inf')
+            if top < val:
+                heapreplace(self.nums, val)
+        return self.nums[0]
 
 
 # Your KthLargest object will be instantiated and called as such:
