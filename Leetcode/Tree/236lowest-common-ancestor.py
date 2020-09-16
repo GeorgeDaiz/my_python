@@ -57,7 +57,8 @@ class Solution:
     当 left 不为空 ，right 为空 ：与情况 3. 同理；
     """
     def lowest_common_ancestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if not root or root == p or root == q: return root
+        if not root or root == p or root == q:
+            return root
         left = self.lowest_common_ancestor(root.left, p, q)
         right = self.lowest_common_ancestor(root.right, p, q)
         if not left and not right:
