@@ -50,7 +50,7 @@ class Solution:
             for j in range(n-1, 0, -1):
                 if matrix[i][0] == 0 or matrix[0][j] == 0:
                     matrix[i][j] = 0
-            if has_zeros == 1:
+            if has_zeros:
                 matrix[i][0] = 0
 
 

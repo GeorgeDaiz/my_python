@@ -16,11 +16,15 @@
 
 class Solution:
     def threeSum(self, nums: list) -> list:
+        if not nums:
+            return []
         n = len(nums)
         nums.sort()
         res = list()
         # 枚举a
         for first in range(n):
+            if nums[first] > 0:
+                break
             # 需要和上次枚举的数不同
             if first > 0 and nums[first] == nums[first - 1]:
                 continue
@@ -42,3 +46,8 @@ class Solution:
                 if nums[second] + nums[third] == target:
                     res.append([nums[first], nums[second], nums[third]])
         return res
+
+
+if __name__ == '__main__':
+    ret = Solution().threeSum([-1, 0, 1, 2, -1, -4])
+    print(ret)
