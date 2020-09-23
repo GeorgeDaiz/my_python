@@ -37,7 +37,7 @@ class Node:
 class Solution:
     # 完美二叉树
     @staticmethod
-    def connect(root: Node) -> Node:
+    def connect(root: Node) -> Node or None:
         # BFS
         if not root:
             return None
@@ -61,7 +61,7 @@ class Solution:
         return root
 
     @staticmethod
-    def connect1(root: Node) -> Node:
+    def connect1(root: Node) -> Node or None:
         # 迭代
         if not root:
             return None
@@ -77,7 +77,7 @@ class Solution:
             pre = pre.left
         return root
 
-    def connect2(self, root: Node) -> Node:
+    def connect2(self, root: Node) -> Node or None:
         # 递归
         if not root:
             return None
@@ -90,7 +90,7 @@ class Solution:
         return root
 
     # 普通二叉树
-    def connect3(self, root: Node) -> Node:
+    def connect3(self, root: Node) -> Node or None:
         if not root:
             return None
         head = root

@@ -19,32 +19,30 @@ import collections
 
 
 class Solution:
-    def num_islands_dfs(self, grid) -> int:
-        # DFS
+    def numIslands_dfs(self, grid) -> int:
+        # DFS将中心点1周围所有的1转为0
         res = 0
         if len(grid) == 0:
-            return res
+            return 0
+
+        def dfs(grid, i, j):
+            dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+            grid[i][j] = '0'
+            for dir in dirs:
+                ni, nj = i + dir[0], j + dir[1]
+                if 0 <= ni < len(grid) and 0 <= nj < len(grid[0]):
+                    if grid[ni][nj] == '1':
+                        dfs(grid, ni, nj)
 
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if grid[i][j] == '1':
-                    self.dfs(grid, i, j)
-                    # self.bfs(grid, i, j)
+                    dfs(grid, i, j)
                     res += 1
         return res
 
-    def dfs(self, grid, i, j):
-        # 已知当前点为1，将他周围相邻的所有1转为0
-        dirs = [[-1, 0], [0, -1], [1, 0], [0, 1]]  # 方向数组
-        grid[i][j] = '0'
-        for d in dirs:  # 遍历上下左右四个方向
-            ni, nj = i + d[0], j + d[1]
-            if 0 <= ni < len(grid) and 0 <= nj < len(grid[0]):
-                if grid[ni][nj] == '1':
-                    self.dfs(grid, ni, nj)
-
     @staticmethod
-    def num_islands_bfs(grid) -> int:
+    def numIslands_bfs(grid) -> int:
         # BFS
         res = 0
         if len(grid) == 0:

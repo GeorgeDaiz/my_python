@@ -23,7 +23,7 @@ class ListNode:
 
 class Solution(object):
     @staticmethod
-    def add_two_numbers(l1: ListNode, l2: ListNode) -> ListNode:
+    def addTwoNumbers(l1: ListNode, l2: ListNode) -> ListNode:
         carry = 0
         head = ListNode(0)
         ret = head
@@ -53,7 +53,7 @@ class Solution(object):
 
         return head.next
 
-    def add_two_numbers_re(self, l1: ListNode, l2: ListNode):
+    def addTwoNumbers_re(self, l1: ListNode, l2: ListNode):
         if not l1 and not l2:
             return
         elif not(l1 and l2):
@@ -61,8 +61,8 @@ class Solution(object):
         else:
             if l1.val + l2.val < 10:
                 l3 = ListNode(l1.val + l2.val)
-                l3.next = self.add_two_numbers_re(l1.next, l2.next)
+                l3.next = self.addTwoNumbers_re(l1.next, l2.next)
             else:
                 l3 = ListNode(l1.val + l2.val - 10)
-                l3.next = self.add_two_numbers_re(l1.next, self.add_two_numbers_re(l2.next, ListNode(1)))
+                l3.next = self.addTwoNumbers_re(l1.next, self.addTwoNumbers_re(l2.next, ListNode(1)))
         return l3
