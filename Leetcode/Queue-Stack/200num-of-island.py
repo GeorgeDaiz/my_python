@@ -68,8 +68,7 @@ class Solution:
         # 已知当前点为1，将他周围相邻的所有1转为0
         dirs = [[-1, 0], [0, -1], [1, 0], [0, 1]]  # 方向数组
         grid[i][j] = '0'
-        s = []
-        s.append([i, j])
+        s = [[i, j]]
         while s:
             temp = s.pop(0)
             x, y = temp[0], temp[1]
