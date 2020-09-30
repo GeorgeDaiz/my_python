@@ -23,15 +23,15 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        cur, p0 = 0, 0
-        p2 = len(nums) - 1
-        while cur <= p2:
+        p = cur = 0
+        q = len(nums) - 1
+        while cur <= q:
             if nums[cur] == 0:
-                nums[p0], nums[cur] = nums[cur], nums[p0]
-                p0 += 1
+                nums[p], nums[cur] = nums[cur], nums[p]
+                p += 1
                 cur += 1
             elif nums[cur] == 2:
-                nums[cur], nums[p2] = nums[p2], nums[cur]
-                p2 -= 1
+                nums[q], nums[cur] = nums[cur], nums[q]
+                q -= 1
             else:
                 cur += 1
