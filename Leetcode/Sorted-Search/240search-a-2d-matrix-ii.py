@@ -1,26 +1,30 @@
-# def queen(A, cur=0):
-#     if cur == len(A):
-#         print(A)
-#         return 0
-#     for col in range(len(A)):
-#         A[cur], flag = col, True
-#         for row in range(cur):
-#             if A[row] == col or abs(col - A[row]) == cur - row:
-#                 flag = False
-#                 break
-#         if flag:
-#             queen(A, cur+1)
-#
-#
-# queen([None]*8)
+"""
+240.搜索二维矩阵II
+编写一个高效的算法来搜索mxn矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：
 
+每行的元素从左到右升序排列。
+每列的元素从上到下升序排列。
 
+示例:
+现有矩阵 matrix 如下：
+
+[
+  [1,   4,  7, 11, 15],
+  [2,   5,  8, 12, 19],
+  [3,   6,  9, 16, 22],
+  [10, 13, 14, 17, 24],
+  [18, 21, 23, 26, 30]
+]
+给定 target=5，返回true。
+
+给定target=20，返回false。
+"""
 from typing import List
-import collections
 
 
 class Solution:
     def searchMatrix(self, matrix, target):
+        # 二分法
         """
         :type matrix: List[List[int]]
         :type target: int
@@ -56,10 +60,21 @@ class Solution:
                     lo = mid + 1
                 else:
                     return True
-
         return False
 
+    def searchMatrix1(self, matrix, target):
+        if not matrix or not matrix[0]:
+            return False
+        height = len(matrix)
+        width = len(matrix[0])
 
-if __name__ == '__main__':
-    ret = Solution().searchMatrix([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]], 19)
-    print(ret)
+        row = height - 1
+        col = 0
+        while col < width and row >= 0:
+            if matrix[row][col] > target:
+                row -= 1
+            elif matrix[row][col] < target:
+                col += 1
+            else:
+                return True
+        return False
