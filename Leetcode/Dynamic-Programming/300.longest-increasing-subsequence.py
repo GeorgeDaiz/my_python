@@ -14,7 +14,20 @@
 
 
 class Solution:
+    # 动态规划
     def lengthOfLIS(self, nums: list) -> int:
+        if not nums:
+            return 0
+        dp = []
+        for i in range(len(nums)):
+            dp.append(i)
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+        return max(dp)
+
+    # 贪心+二分查找 （只考虑子序列长度，不考虑子序列元素顺序）
+    def lengthOfLIS1(self, nums: list) -> int:
         d = []
         for n in nums:
             if not d or n > d[-1]:
