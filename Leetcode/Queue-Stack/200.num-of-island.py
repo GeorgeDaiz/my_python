@@ -23,22 +23,22 @@ class Solution:
         # DFS将中心点1周围所有的1转为0
         res = 0
         if len(grid) == 0:
-            return 0
+            return res
 
         def dfs(grid, i, j):
             dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]]
             grid[i][j] = '0'
             for dir in dirs:
-                ni, nj = i + dir[0], j + dir[1]
-                if 0 <= ni < len(grid) and 0 <= nj < len(grid[0]):
-                    if grid[ni][nj] == '1':
-                        dfs(grid, ni, nj)
+                new_i, new_j = i + dir[0], j + dir[1]
+                if 0 <= new_i < len(grid) and 0 <= new_j < len(grid[0]) and grid[new_i][new_j] == '1':
+                    grid[new_i][new_j] = '0'
 
-        for i in range(len(grid)):
-            for j in range(len(grid[0])):
-                if grid[i][j] == '1':
-                    dfs(grid, i, j)
+        for m in range(len(grid)):
+            for n in range(len(grid[0])):
+                if grid[m][n] == '1':
+                    dfs(grid, m, n)
                     res += 1
+
         return res
 
     @staticmethod
@@ -64,15 +64,3 @@ class Solution:
                                 grid[m][n] = '0'
         return res
 
-    def bfs(self, grid, i, j):
-        # 已知当前点为1，将他周围相邻的所有1转为0
-        dirs = [[-1, 0], [0, -1], [1, 0], [0, 1]]  # 方向数组
-        grid[i][j] = '0'
-        s = [[i, j]]
-        while s:
-            temp = s.pop(0)
-            x, y = temp[0], temp[1]
-            for m, n in [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]:
-                if 0 <= m < len(grid) and 0 <= n < len(grid[0]) and grid[m][n] == '1':
-                    s.append((m, n))
-                    grid[m][n] = '0'
