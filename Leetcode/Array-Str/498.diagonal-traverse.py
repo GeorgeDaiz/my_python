@@ -1,4 +1,5 @@
 """
+498.对角线遍历
 给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。
 
 示例:
@@ -35,6 +36,8 @@ class Solution:
                     res.append(matrix[i][k - i])
         return res
 
+    # 同一对角线上i+j相同
+    # i+j为偶时逆序，为奇时不变
     @staticmethod
     def find_diagonal_order1(matrix):
         if not matrix:
