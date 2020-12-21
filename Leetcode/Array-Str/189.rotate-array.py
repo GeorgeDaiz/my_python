@@ -37,8 +37,8 @@ class Solution:
 
     def rotate2(self, nums: list, k: int) -> None:
         # 切片法
-        res = k % len(nums)
-        nums[:] = nums[-res:] + nums[:-res]
+        k %= len(nums)
+        nums[:] = nums[-k:] + nums[:-k]
 
     def rotate3(self, nums: list, k: int) -> None:
         """
