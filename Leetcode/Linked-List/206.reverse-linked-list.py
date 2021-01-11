@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 """
 反转一个单链表。
 
@@ -24,38 +23,21 @@ class Solution:
         if not head:
             return
         p = head
-        q = head.next
-        p.next = None
-        while q:
-            r = q.next
-            q.next = p
-            p = q
-            q = r
-        return p
+        q = None
+        while p:
+            r = p.next  # 暂存后继节点
+            q.next = q  # 修改next引用指向
+            q = p       # q暂存p
+            p = r       # p访问下一节点
+        return q
 
     @staticmethod
-    def reverse_list1(head: ListNode):
-        if not head:
-            return
-        new = None
-        while head:
-            p = head
-            head = head.next
-            p.next = new
-            new = p
-        return new
+    def reverse_list_re(head: ListNode):
+        def recur(cur, pre):
+            if not cur:
+                return pre              # 终止条件
+            res = recur(cur.next, cur)  # 递归后继节点
+            cur.next = pre              # 修改节点引用指向
+            return res                  # 返回反转链表的头节点
 
-    @staticmethod
-    def reverse_list_re(self, head: ListNode):
-        if not head:
-            return
-        if not head.next:
-            return head
-        head_node = self.reverse_list_re(head.next)
-        head.next.next = head
-        head.next = None
-        return head_node
-
-
-if __name__ == '__main__':
-    solution = Solution()
+        return recur(head, None)        # 调用递归并返回
