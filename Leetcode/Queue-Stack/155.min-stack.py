@@ -27,29 +27,27 @@ minStack.getMin();   --> 返回 -2.
 提示：
     pop、top 和 getMin 操作总是在 非空栈 上调用
 """
+import math
 
 
 class MinStack:
     def __init__(self):
-        """
-        initialize your data structure here.
-        """
         self.stack = []
-        self.min = [int('inf')]
+        self.min_stack = [math.inf]
 
-    def push(self, x: int) -> None:
+    def push(self, x) -> None:
         self.stack.append(x)
-        self.min.append(min(x, self.min[-1]))
+        self.min_stack.append(min(x, self.min_stack[-1]))
 
     def pop(self) -> None:
         self.stack.pop()
-        self.min.pop()
+        self.min_stack.pop()
 
-    def top(self) -> int:
+    def top(self):
         return self.stack[-1]
 
-    def get_min(self):
-        return self.min[-1]
+    def getMin(self):
+        return self.min_stack[-1]
 
 
 class MinStack1:
