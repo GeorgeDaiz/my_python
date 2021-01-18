@@ -46,7 +46,5 @@ class Solution:
             return n
         a, b = 1, 2,
         for i in range(3, n + 1):
-            temp = a + b
-            a = b
-            b = temp
+            a, b = b, a + b
         return b
