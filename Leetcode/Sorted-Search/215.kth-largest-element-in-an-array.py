@@ -82,12 +82,46 @@ class Solution:
             print(heap)
 
         heap = []
+        # 上浮式建堆
         for i in range(min(len(nums), k)):
             heap.append(nums[i])
             shift_up(i)
 
+        # 下沉式维护堆
         for i in range(k, len(nums)):
             if nums[i] > heap[0]:
                 heap[0] = nums[i]
                 shift_down(0, k-1)
         return heap[0]
+
+
+class Solution1:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heap = nums[:k]
+        for i in range(k//2-1, -1, -1):
+            self.shift_down(heap, i, k - 1)
+        for j in range(k, len(nums)):
+            if nums[j] > heap[0]:
+                heap[0] = nums[j]
+                self.shift_down(heap, 0, k - 1)
+        return heap[0]
+
+    def shift_down(self, heap, l, r):
+        val = heap[l]
+        i = l
+        j = i * 2 + 1
+        while j <= r:
+            if j+1 <= r and heap[j+1] < heap[j]:
+                j = j + 1
+            if heap[j] < val:
+                heap[i] = heap[j]
+                i = j
+                j = i * 2 + 1
+            else:
+                break
+        heap[i] = val
+
+
+if __name__ == '__main__':
+    ret = Solution().findKthLargest2([7, 6, 5, 4, 3, 2, 1], 4)
+    print(ret)
