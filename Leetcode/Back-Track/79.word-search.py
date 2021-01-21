@@ -68,7 +68,7 @@ class Solution:
 
         for i in range(len(board)):
             for j in range(len(board[0])):
-                if dfs(i, j, k):
+                if dfs(i, j, 0):
                     return True
         return False
 
