@@ -38,7 +38,7 @@ class Codec:
         :rtype: str
         """
         if not root:
-            return "[]"
+            return []
         res = []
         queue = collections.deque()
         queue.append(root)
@@ -106,12 +106,13 @@ class Codec2:
     # BFS
     def serialize(self, root):
         if not root:
-            return '[]'
-        deque = collections.deque(root)
+            return []
+        deque = collections.deque()
+        deque.append(root)
         res = ''
         while deque:
             node = deque.popleft()
-            if node != TreeNode(None):
+            if node != None:
                 res += str(node.val) + ','
                 deque.append(node.left)
                 deque.append(node.right)
@@ -121,7 +122,7 @@ class Codec2:
 
     def deserialize(self, data):
         if not data:
-            return TreeNode(None)
+            return None
         data = data.split(',')
         root = TreeNode(data.pop(0))
         queue = [root]
