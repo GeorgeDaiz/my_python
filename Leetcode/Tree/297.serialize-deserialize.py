@@ -75,6 +75,71 @@ class Codec:
             i += 1
         return root
 
+
+class Codec1:
+    # DFS
+    def serialize(self, root):
+        # Encode a tree to a single string.
+        if not root:
+            return 'X,'
+        left_serilized = self.serialize(root.left)
+        right_serilized = self.serialize(root.right)
+        return str(root.val) + ',' + left_serilized + right_serilized
+
+    def deserilize(self, data):
+        # Decode your encode data to tree
+        data = data.split(',')
+        root = self.build_tree(data)
+        return root
+
+    def build_tree(self, data):
+        val = data.pop(0)
+        if val == 'X':
+            return None
+        node = TreeNode(val)
+        node.left = self.build_tree(data)
+        node.right = self.build_tree(data)
+        return node
+
+
+class Codec2:
+    # BFS
+    def serilize(self, root):
+        if not root:
+            return '[]'
+        deque = collections.deque(root)
+        res = ''
+        while deque:
+            node = deque.popleft()
+            if node != TreeNode(None):
+                res += str(node.val) + ','
+                deque.append(node.left)
+                deque.append(node.right)
+            else:
+                res += 'X,'
+        return res
+
+    def deserilize(self, data):
+        if not data:
+            return TreeNode(None)
+        data = data.split(',')
+        root = TreeNode(data.pop(0))
+        queue = [root]
+        while queue:
+            node = queue.pop(0)
+            if data:
+                val = data.pop(0)
+                if val != 'X':
+                    node.left = TreeNode(val)
+                    queue.append(node.left)
+            if data:
+                val = data.pop(0)
+                if val != 'X':
+                    node.right = TreeNode(val)
+                    queue.append(node.right)
+        return root
+
+
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
 # codec.deserialize(codec.serialize(root))
