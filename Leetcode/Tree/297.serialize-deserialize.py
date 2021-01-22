@@ -86,7 +86,7 @@ class Codec1:
         right_serilized = self.serialize(root.right)
         return str(root.val) + ',' + left_serilized + right_serilized
 
-    def deserilize(self, data):
+    def deserialize(self, data):
         # Decode your encode data to tree
         data = data.split(',')
         root = self.build_tree(data)
@@ -104,7 +104,7 @@ class Codec1:
 
 class Codec2:
     # BFS
-    def serilize(self, root):
+    def serialize(self, root):
         if not root:
             return '[]'
         deque = collections.deque(root)
@@ -119,7 +119,7 @@ class Codec2:
                 res += 'X,'
         return res
 
-    def deserilize(self, data):
+    def deserialize(self, data):
         if not data:
             return TreeNode(None)
         data = data.split(',')
