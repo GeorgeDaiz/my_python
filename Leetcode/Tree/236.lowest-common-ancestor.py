@@ -61,8 +61,6 @@ class Solution:
             return root
         left = self.lowest_common_ancestor(root.left, p, q)
         right = self.lowest_common_ancestor(root.right, p, q)
-        if not left and not right:
-            return None
         if not left:
             return right
         if not right:
