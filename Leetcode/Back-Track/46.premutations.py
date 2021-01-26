@@ -41,6 +41,8 @@ class Solution(object):
                 backtrack(temp_list+[nums[i]], length+1)
                 visited[i] = 0
 
+        backtrack([], 0)
+
         # 2
         # def backtrack1(nums, temp_list, length):
         #     if length == n:
@@ -48,8 +50,8 @@ class Solution(object):
         #     for i in range(len(nums)):
         #         backtrack1(nums[:i]+nums[i+1:], temp_list+[nums[i]], length+1)
 
-        backtrack([], 0)
         # backtrack1(nums, [], 0)
+
         return res
 
     def permute1(self, nums: List[int]) -> List[List[int]]:
