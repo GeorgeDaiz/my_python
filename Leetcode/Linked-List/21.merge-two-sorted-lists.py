@@ -1,4 +1,5 @@
 """
+21.合并两个有序链表
 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
 
 示例：
@@ -18,8 +19,7 @@ class Solution:
     @staticmethod
     def merge_two_list(head1: ListNode, head2: ListNode) -> ListNode:
         # 迭代
-        head = ListNode(-1)
-        prev = head
+        head = prev = ListNode(-1)
         while head1 and head2:
             if head1.val < head2.val:
                 prev.next = head1
