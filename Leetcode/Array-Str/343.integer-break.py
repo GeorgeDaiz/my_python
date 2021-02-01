@@ -30,6 +30,7 @@ class Solution:
             return 3 ** quotient * 2
 
     def integerBreak1(self, n: int) -> int:
+        # 动态规划
         if n < 4:
             return n - 1
 
