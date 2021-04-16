@@ -30,13 +30,13 @@ class Solution:
         if not root:
             return []
 
-        stack, output = [root, ], []
-        while stack:
+        queue, output = [root, ], []
+        while queue:
             bf = []
-            for i in range(len(stack)):
-                root = stack.pop(0)
+            for i in range(len(queue)):
+                root = queue.pop(0)
                 bf.append(root.val)
                 for j in root.children:
-                    stack.append(j)
+                    queue.append(j)
             output.append(bf)
         return output
