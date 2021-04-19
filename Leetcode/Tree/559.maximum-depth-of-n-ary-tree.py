@@ -29,7 +29,7 @@ class Solution:
     def maxDepth(self, root: 'Node') -> int:
         if not root:
             return 0
-        elif root.children == []:
+        elif not root.children:
             return 1
         depth = [self.maxDepth(i) for i in root.children]
         return max(depth) + 1
