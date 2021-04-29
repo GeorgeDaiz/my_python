@@ -19,6 +19,10 @@
 提示：
 树中节点数目范围是 [1, 3 * 104]
 -1000 <= Node.val <= 1000
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/binary-tree-maximum-path-sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 
 

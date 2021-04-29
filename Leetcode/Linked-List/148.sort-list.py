@@ -20,6 +20,10 @@
 提示：
 链表中节点的数目在范围[0, 5 * 104]内
 -105<= Node.val <= 105
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/sort-list
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 
 

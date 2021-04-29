@@ -12,6 +12,10 @@
 
 进阶：
 你可以在常数空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组不被视为额外空间。）
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/product-of-array-except-self
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from typing import List
 from functools import reduce
