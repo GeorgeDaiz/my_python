@@ -76,21 +76,13 @@ class Solution:
 
     # 4. BFS广度优先搜索方法, 搜到有效的字符串时就可以在当前层结束后返回。
     def removeInvalidParentheses1(self, s: str) -> List[str]:
-        rm_left, rm_right = self.get_remove_num(s)
-        ans = []
+        level = {s}
+        while True:  # BFS
+            valid = list(filter(self.is_valid, level))
+            if valid:
+                return valid
+            level = {s[:i] + s[i + 1:] for s in level for i in range(len(s)) if s[i] in '()'}
 
-        def dfs(left: int, right: int, start: int, ss: str):
-            if left == right == 0 and self.is_valid(ss):
-                ans.append(ss)
-            for i in range(start, len(ss)):
-                c = ss[i]
-                # 去重复
-                if i > 0 and ss[i] == ss[i - 1]:
-                    continue
-                if c == "(" and left > 0:
-                    dfs(left - 1, right, i, ss[:i] + ss[i + 1:])
-                elif c == ")" and right > 0:
-                    dfs(left, right - 1, i, ss[:i] + ss[i + 1:])
 
-        dfs(rm_left, rm_right, 0, s)
-        return ans
+if __name__ == '__main__':
+    print(Solution().removeInvalidParentheses1('()()))(((()'))
