@@ -55,7 +55,7 @@ class Solution:
                 new_row, new_col = row + row_off, col + col_off
                 if new_row < 0 or new_row >= row_num or new_col < 0 or new_col >= col_num:
                     continue
-                if not board[new_row][new_col]:
+                if not board[new_row][new_col] in curr:
                     continue
                 backtrack(new_row, new_col, curr)
 
@@ -69,3 +69,8 @@ class Solution:
                     backtrack(row, col, trie)
 
         return matched_words
+
+
+if __name__ == '__main__':
+    ret = Solution().findWords(board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], words = ["oath","pea","eat","rain"])
+    print(ret)
