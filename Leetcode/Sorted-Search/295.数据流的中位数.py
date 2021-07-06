@@ -22,6 +22,10 @@ findMedian() -> 2
 进阶:
 如果数据流中所有整数都在 0 到 100 范围内，你将如何优化你的算法？
 如果数据流中 99% 的整数都在 0 到 100 范围内，你将如何优化你的算法？
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/find-median-from-data-stream/
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from heapq import *
 

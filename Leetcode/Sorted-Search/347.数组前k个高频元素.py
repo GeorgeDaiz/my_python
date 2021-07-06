@@ -16,6 +16,10 @@
 你的算法的时间复杂度必须优于 O(n log n) ,n是数组的大小。
 题目数据保证答案唯一，换句话说，数组中前 k 个高频元素的集合是唯一的。
 你可以按任意顺序返回答案。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/top-k-frequent/
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from typing import List
 import collections
