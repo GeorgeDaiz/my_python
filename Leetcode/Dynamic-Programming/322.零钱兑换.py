@@ -24,6 +24,10 @@
 示例 5：
 输入：coins = [1], amount = 2
 输出：2
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/coin-change
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 import functools
 from typing import List
