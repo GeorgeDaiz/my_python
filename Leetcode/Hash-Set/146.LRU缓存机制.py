@@ -35,6 +35,10 @@ lRUCache.get(4);    // 返回 4
 0 <= key <= 3000
 0 <= value <= 104
 最多调用 3 * 104 次 get 和 put
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/lru-cache
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 
 
