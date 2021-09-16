@@ -30,3 +30,4 @@ class Solution(object):
                 return [buff_dict[numbers[i]], i]
             else:
                 buff_dict[target - numbers[i]] = i
+

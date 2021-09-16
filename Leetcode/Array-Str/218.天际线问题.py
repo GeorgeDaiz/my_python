@@ -37,45 +37,33 @@ buildings 按 lefti 非递减排序
 """
 import heapq
 from typing import List
+from sortedcontainers import SortedList
 
 
 class Solution:
     # 顺序扫描
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
-        s = []
         ans = []
-        cur = 0
+        changes = []
         for left, right, height in buildings:
-            while s and s[0][1] < left:
-                rh, r = heapq.heappop(s)
-                if r >= cur:
-                    if not s or rh != s[0][0]:
-                        while s and r > s[0][1]:
-                            heapq.heappop(s)
-                        rh = -s[0][0] if s else 0
-                        if r == ans[-1][0]:
-                            ans[-1][-1] = min(ans[-1][1], rh)
-                        else:
-                            ans.append([r, rh])
-                    cur = r
-                if not s or height > -s[0][0]:
-                    # 避免左端点重复的问题
-                    if ans and left == ans[-1][0]:
-                        ans[-1][1] = height
-                    else:
-                        ans.append([left, height])
-                heapq.heappush(s, [-height, right])
-                while s:
-                    rh, r = heapq.heappop(s)
-                    if r >= cur:
-                        if not s or rh != s[0][0]:
-                            while s and r > s[0][1]:
-                                heapq.heappop(s)
-                            rh = -s[0][0] if s else 0
-                            # 避免右端点重复
-                            if r == ans[-1][0]:
-                                ans[-1][1] = min(ans[-1][1], rh)
-                            else:
-                                ans.append([r, rh])
-                        cur = r
-                return ans
+            changes.append((left, -height))
+            changes.append((right, height))
+        # 按变化的先后排序
+        changes.sort()
+        # 默认有一个高度为0
+        lives = SortedList([0])
+        # 上一个建筑最高高度
+        prev = 0
+        for x, h in changes:
+            # 根据h大小加入或删除建筑
+            if h < 0:
+                lives.add(h)
+            else:
+                lives.remove(-h)
+            # 加入或删除后当前最高高度
+            curr = -lives[0]
+            # 最高高度发生了变化
+            if curr != prev:
+                ans.append([x, curr])
+            prev = curr
+        return ans
