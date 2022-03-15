@@ -24,6 +24,7 @@ class Solution(object):
         if not numbers:
             return []
 
+        # 缓存
         buff_dict = {}
         for i in range(len(numbers)):
             if numbers[i] in buff_dict:

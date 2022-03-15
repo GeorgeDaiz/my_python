@@ -37,7 +37,7 @@ class TreeNode:
 class Solution:
     def kthLargest(self, root: TreeNode, k: int) -> int:
         if not root:
-            return
+            return 0
         stack = []
         res = []
         while stack or root:

@@ -1,13 +1,6 @@
 """
 1114.按序打印
-我们提供了一个类：
-
-public class Foo {
- public void first() { print("first"); }
- public void second() { print("second"); }
- public void third() { print("third"); }
-}
-三个不同的线程将会共用一个Foo实例。
+我们提供了一个类Foo,三个不同的线程将会共用一个Foo实例。
 
 线程 A 将会调用 first() 方法
 线程 B 将会调用second() 方法
